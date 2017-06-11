@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		a{
+			text-decoration: none;
+			color: #000;
+		}
+		.clearfix:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.btn {
+			border-radius: 6px;
+			padding: 1px 10px;
+			background: #fff;
+		}
+		.model {
+			position: fixed;
+			top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0,0,0,0.4);
+			display: none;
+		}
+		.show {
+			display: block;
+		}
+		.panel {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 600px;
+            background: #fff;
+            border-radius: 4px;
+            
+		}
+		.panel>.header {
+			border-bottom: 1px solid #ccc;
+			padding: 15px 10px;
+		}
+		.panel .header>h3 {
+			float: left;
+		}
+		.panel .header>.close {
+			float: right;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		.panel .content {
+			padding: 30px 10px;
+			border-bottom: 1px solid #ccc;
+		}
+		.panel .content>p {
+			margin-bottom: 20px;	
+		}
+		
+		.footer>.btn {
+			float: right;
+			margin-right: 10px;
+			padding: 20px 0;
+		}
+	</style>
+</head>
+<body>
+    <div class="ct">
+    	<button class="btn">点我</button>
+    	<div class="model">
+	        <div class="panel">
+	            <div class="header clearfix">
+	        	<h3>这是标题</h3>
+	        	<span class="close">×</span>
+	        	</div>
+	        	<div class="content">
+	        		<p>这是内容</p>
+	        		<p>这是内容</p>
+	        	</div>
+	        	<div class="footer">
+	        		<a class="btn cancel" href="#">取消</a>
+	        		<a class="btn ok" href="#">确认</a>
+	        	</div>
+	        </div>
+	    </div>
+    </div>
+
+    <script type="text/javascript">
+    	var btn = document.querySelector('.btn')
+    	var model = document.querySelector('.model')
+    	var close = document.querySelector('.close')
+    	var panel = document.querySelector('.panel')
+    	var  cancel = document.querySelector('.cancel')
+    	btn.addEventListener('click',function() {
+           model.classList.add('show')
+    	})
+    	close.addEventListener('click',function() {
+    		model.classList.remove('show')
+    	})
+    	model.addEventListener('click',function() {
+    		model.classList.remove('show')
+    	})
+    	panel.addEventListener('click',function(e) {
+    		e.stopPropagation()
+    	})
+    	cancel.addEventListener('click',function() {
+    		model.classList.remove('show')
+    	})
+    </script>
+</body>
+</html>
